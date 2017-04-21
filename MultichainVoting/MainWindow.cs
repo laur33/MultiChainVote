@@ -9,6 +9,15 @@ using MultiChainLib;
 
 public partial class MainWindow : Gtk.Window
 {
+	//Allow all functions to make use of the MultiChainClient client
+	MultiChainClient client;
+
+	//Asset name to send 
+	string assetName;
+
+	//New address
+	string address;
+
 	public MainWindow() : base(Gtk.WindowType.Toplevel)
 	{
 		Build();
@@ -32,12 +41,53 @@ public partial class MainWindow : Gtk.Window
 
 	internal async Task connectToChain()
 	{
-		var client = new MultiChainClient("192.168.218.128", 6820, false, "multichainrpc", "A3u8rr7R7i8wCtcYEfMH41aCjWcapXGdxhmdHhVtMGvs", "test");
+		client = new MultiChainClient("192.168.218.128", 6820, false, "multichainrpc", "A3u8rr7R7i8wCtcYEfMH41aCjWcapXGdxhmdHhVtMGvs", "test");
 
 		// get server info...
-		Console.WriteLine("*** getinfo ***");
+		Console.WriteLine("Connect to chain");
 		var info = await client.GetInfoAsync();
 		info.AssertOk();
-		Console.WriteLine("Chain: {0}, difficulty: {1}", info.Result.ChainName, info.Result.Difficulty);
+		Console.WriteLine("ChainName: {0}", info.Result.ChainName);
 		Console.WriteLine();	}
+
+	protected void OnButtonGenerateClicked(object sender, EventArgs e)
+	{
+		var task = Task.Run(async () =>			
+		{
+			await CreateAddressAsync(BlockchainPermissions.Send | BlockchainPermissions.Receive | BlockchainPermissions.Issue);
+
+		});
+		task.Wait();
+			
+	}
+
+	protected void OnButtonVoteClicked(object sender, EventArgs e)
+	{
+		
+	}
+
+	private async Task CreateAddressAsync(BlockchainPermissions permissions)
+	{
+		// Create a new address
+		Console.WriteLine("Create New address");
+		var newAddress = await client.GetNewAddressAsync();
+		newAddress.AssertOk();
+		Console.WriteLine("New issue address: " + newAddress.Result);
+		Console.WriteLine();
+
+		// Give send/receive/issue permissions
+		Console.WriteLine("Grant new chain permissions");
+		var perms = await client.GrantAsync(new List<string>() { newAddress.Result }, permissions);
+		Console.WriteLine(perms.RawJson);
+		perms.AssertOk();
+
+		// Issue a vote to the new address
+		assetName = "asset_" + Guid.NewGuid().ToString().Replace("-", "").Substring(0, 24);
+		Console.WriteLine("Give a new asset to the new address");
+		var asset = await client.IssueAsync(newAddress.Result, assetName, 1, 1);
+		Console.WriteLine(perms.RawJson);
+		perms.AssertOk();
+
+		address = newAddress.Result;
+	 }
 }

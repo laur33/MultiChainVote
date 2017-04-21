@@ -7,9 +7,19 @@ public partial class MainWindow
 
 	private global::Gtk.VBox vbox1;
 
-	private global::Gtk.MenuBar menubar1;
+	private global::Gtk.VBox vbox2;
 
 	private global::Gtk.Button clientConnect;
+
+	private global::Gtk.Button buttonGenerate;
+
+	private global::Gtk.HBox hbox3;
+
+	private global::Gtk.Label AddressToSendVoteTo;
+
+	private global::Gtk.TextView textview1;
+
+	private global::Gtk.Button buttonVote;
 
 	protected virtual void Build()
 	{
@@ -27,25 +37,72 @@ public partial class MainWindow
 		this.vbox1.Name = "vbox1";
 		this.vbox1.Spacing = 6;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString("<ui><menubar name=\'menubar1\'/></ui>");
-		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget("/menubar1")));
-		this.menubar1.Name = "menubar1";
-		this.vbox1.Add(this.menubar1);
-		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.menubar1]));
-		w2.Position = 0;
-		w2.Expand = false;
-		w2.Fill = false;
-		// Container child vbox1.Gtk.Box+BoxChild
+		this.vbox2 = new global::Gtk.VBox();
+		this.vbox2.Name = "vbox2";
+		this.vbox2.Spacing = 6;
+		// Container child vbox2.Gtk.Box+BoxChild
 		this.clientConnect = new global::Gtk.Button();
 		this.clientConnect.CanFocus = true;
 		this.clientConnect.Name = "clientConnect";
 		this.clientConnect.UseUnderline = true;
 		this.clientConnect.Label = global::Mono.Unix.Catalog.GetString("clientConnect");
-		this.vbox1.Add(this.clientConnect);
-		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.clientConnect]));
+		this.vbox2.Add(this.clientConnect);
+		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.clientConnect]));
+		w2.Position = 0;
+		w2.Expand = false;
+		w2.Fill = false;
+		// Container child vbox2.Gtk.Box+BoxChild
+		this.buttonGenerate = new global::Gtk.Button();
+		this.buttonGenerate.CanFocus = true;
+		this.buttonGenerate.Name = "buttonGenerate";
+		this.buttonGenerate.UseUnderline = true;
+		this.buttonGenerate.Label = global::Mono.Unix.Catalog.GetString("Generate New Address and one Vote");
+		this.vbox2.Add(this.buttonGenerate);
+		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.buttonGenerate]));
 		w3.Position = 1;
 		w3.Expand = false;
 		w3.Fill = false;
+		// Container child vbox2.Gtk.Box+BoxChild
+		this.hbox3 = new global::Gtk.HBox();
+		this.hbox3.Name = "hbox3";
+		this.hbox3.Spacing = 6;
+		// Container child hbox3.Gtk.Box+BoxChild
+		this.AddressToSendVoteTo = new global::Gtk.Label();
+		this.AddressToSendVoteTo.Name = "AddressToSendVoteTo";
+		this.AddressToSendVoteTo.LabelProp = global::Mono.Unix.Catalog.GetString("AddressToSendVoteTo");
+		this.hbox3.Add(this.AddressToSendVoteTo);
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.AddressToSendVoteTo]));
+		w4.Position = 0;
+		w4.Expand = false;
+		w4.Fill = false;
+		// Container child hbox3.Gtk.Box+BoxChild
+		this.textview1 = new global::Gtk.TextView();
+		this.textview1.CanFocus = true;
+		this.textview1.Name = "textview1";
+		this.hbox3.Add(this.textview1);
+		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.textview1]));
+		w5.Position = 1;
+		this.vbox2.Add(this.hbox3);
+		global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.hbox3]));
+		w6.Position = 2;
+		w6.Expand = false;
+		w6.Fill = false;
+		this.vbox1.Add(this.vbox2);
+		global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.vbox2]));
+		w7.Position = 0;
+		w7.Expand = false;
+		w7.Fill = false;
+		// Container child vbox1.Gtk.Box+BoxChild
+		this.buttonVote = new global::Gtk.Button();
+		this.buttonVote.CanFocus = true;
+		this.buttonVote.Name = "buttonVote";
+		this.buttonVote.UseUnderline = true;
+		this.buttonVote.Label = global::Mono.Unix.Catalog.GetString("Send Asset");
+		this.vbox1.Add(this.buttonVote);
+		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox1[this.buttonVote]));
+		w8.Position = 1;
+		w8.Expand = false;
+		w8.Fill = false;
 		this.Add(this.vbox1);
 		if ((this.Child != null))
 		{
@@ -56,5 +113,7 @@ public partial class MainWindow
 		this.Show();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler(this.OnDeleteEvent);
 		this.clientConnect.Clicked += new global::System.EventHandler(this.OnClientConnectClicked);
+		this.buttonGenerate.Clicked += new global::System.EventHandler(this.OnButtonGenerateClicked);
+		this.buttonVote.Clicked += new global::System.EventHandler(this.OnButtonVoteClicked);
 	}
 }

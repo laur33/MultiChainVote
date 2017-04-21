@@ -18,9 +18,76 @@
         <property name="MemberName" />
         <property name="Spacing">6</property>
         <child>
-          <widget class="Gtk.MenuBar" id="menubar1">
+          <widget class="Gtk.VBox" id="vbox2">
             <property name="MemberName" />
-            <node name="__gtksharp_96_Stetic_Editor_ActionMenuBar" type="Menubar" />
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.Button" id="clientConnect">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextOnly</property>
+                <property name="Label" translatable="yes">clientConnect</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnClientConnectClicked" />
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="buttonGenerate">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextOnly</property>
+                <property name="Label" translatable="yes">Generate New Address and one Vote</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnButtonGenerateClicked" />
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.HBox" id="hbox3">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Label" id="AddressToSendVoteTo">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">AddressToSendVoteTo</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.TextView" id="textview1">
+                    <property name="MemberName" />
+                    <property name="CanFocus">True</property>
+                    <property name="Text" translatable="yes" />
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
           </widget>
           <packing>
             <property name="Position">0</property>
@@ -30,13 +97,13 @@
           </packing>
         </child>
         <child>
-          <widget class="Gtk.Button" id="clientConnect">
+          <widget class="Gtk.Button" id="buttonVote">
             <property name="MemberName" />
             <property name="CanFocus">True</property>
             <property name="Type">TextOnly</property>
-            <property name="Label" translatable="yes">clientConnect</property>
+            <property name="Label" translatable="yes">Send Asset</property>
             <property name="UseUnderline">True</property>
-            <signal name="Clicked" handler="OnClientConnectClicked" />
+            <signal name="Clicked" handler="OnButtonVoteClicked" />
           </widget>
           <packing>
             <property name="Position">1</property>
