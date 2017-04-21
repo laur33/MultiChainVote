@@ -61,11 +61,6 @@ public partial class MainWindow : Gtk.Window
 			
 	}
 
-	protected void OnButtonVoteClicked(object sender, EventArgs e)
-	{
-		
-	}
-
 	private async Task CreateAddressAsync(BlockchainPermissions permissions)
 	{
 		// Create a new address
@@ -90,4 +85,32 @@ public partial class MainWindow : Gtk.Window
 
 		address = newAddress.Result;
 	 }
+
+	protected void OnButtonVoteClicked(object sender, EventArgs e)
+	{
+		
+		// Call task to connect to client blockchain
+		var task = Task.Run(async () =>
+		{
+			await sendAsset();
+		});
+		task.Wait();
+
+	}
+
+	private async Task sendAsset()	{
+		Console.WriteLine("Sending asset to address specified in text box");
+		Console.WriteLine(textview1.Buffer.Text);
+		var sentAsset = await client.SendAssetToAddressAsync(textview1.Buffer.Text, assetName, 1);
+		Console.WriteLine(sentAsset.RawJson);
+		sentAsset.AssertOk();
+
+		Console.WriteLine("Showing current balances in address specified in text box");
+		var addressBalance = await client.GetAddressBalancesAsync(textview1.Buffer.Text);
+		Console.WriteLine(addressBalance.RawJson);
+		sentAsset.AssertOk();
+
+
+	}
+
 }
