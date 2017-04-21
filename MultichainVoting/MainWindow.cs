@@ -58,7 +58,6 @@ public partial class MainWindow : Gtk.Window
 
 		});
 		task.Wait();
-			
 	}
 
 	private async Task CreateAddressAsync(BlockchainPermissions permissions)
@@ -83,8 +82,7 @@ public partial class MainWindow : Gtk.Window
 		Console.WriteLine(perms.RawJson);
 		perms.AssertOk();
 
-		address = newAddress.Result;
-	 }
+		address = newAddress.Result;	 }
 
 	protected void OnButtonVoteClicked(object sender, EventArgs e)
 	{
@@ -95,7 +93,6 @@ public partial class MainWindow : Gtk.Window
 			await sendAsset();
 		});
 		task.Wait();
-
 	}
 
 	private async Task sendAsset()	{
@@ -109,7 +106,6 @@ public partial class MainWindow : Gtk.Window
 		var addressBalance = await client.GetAddressBalancesAsync(textview1.Buffer.Text);
 		Console.WriteLine(addressBalance.RawJson);
 		sentAsset.AssertOk();
-
 
 	}
 

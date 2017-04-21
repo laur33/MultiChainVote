@@ -26,7 +26,7 @@
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">clientConnect</property>
+                <property name="Label" translatable="yes">Connect To Chain</property>
                 <property name="UseUnderline">True</property>
                 <signal name="Clicked" handler="OnClientConnectClicked" />
               </widget>
@@ -42,7 +42,7 @@
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Generate New Address and one Vote</property>
+                <property name="Label" translatable="yes">Generate new address and an asset</property>
                 <property name="UseUnderline">True</property>
                 <signal name="Clicked" handler="OnButtonGenerateClicked" />
               </widget>
@@ -60,7 +60,7 @@
                 <child>
                   <widget class="Gtk.Label" id="AddressToSendVoteTo">
                     <property name="MemberName" />
-                    <property name="LabelProp" translatable="yes">AddressToSendVoteTo</property>
+                    <property name="LabelProp" translatable="yes">Address to send asset to</property>
                   </widget>
                   <packing>
                     <property name="Position">0</property>

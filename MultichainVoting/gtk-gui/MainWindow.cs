@@ -45,7 +45,7 @@ public partial class MainWindow
 		this.clientConnect.CanFocus = true;
 		this.clientConnect.Name = "clientConnect";
 		this.clientConnect.UseUnderline = true;
-		this.clientConnect.Label = global::Mono.Unix.Catalog.GetString("clientConnect");
+		this.clientConnect.Label = global::Mono.Unix.Catalog.GetString("Connect To Chain");
 		this.vbox2.Add(this.clientConnect);
 		global::Gtk.Box.BoxChild w2 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.clientConnect]));
 		w2.Position = 0;
@@ -56,7 +56,7 @@ public partial class MainWindow
 		this.buttonGenerate.CanFocus = true;
 		this.buttonGenerate.Name = "buttonGenerate";
 		this.buttonGenerate.UseUnderline = true;
-		this.buttonGenerate.Label = global::Mono.Unix.Catalog.GetString("Generate New Address and one Vote");
+		this.buttonGenerate.Label = global::Mono.Unix.Catalog.GetString("Generate new address and an asset");
 		this.vbox2.Add(this.buttonGenerate);
 		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox2[this.buttonGenerate]));
 		w3.Position = 1;
@@ -69,7 +69,7 @@ public partial class MainWindow
 		// Container child hbox3.Gtk.Box+BoxChild
 		this.AddressToSendVoteTo = new global::Gtk.Label();
 		this.AddressToSendVoteTo.Name = "AddressToSendVoteTo";
-		this.AddressToSendVoteTo.LabelProp = global::Mono.Unix.Catalog.GetString("AddressToSendVoteTo");
+		this.AddressToSendVoteTo.LabelProp = global::Mono.Unix.Catalog.GetString("Address to send asset to");
 		this.hbox3.Add(this.AddressToSendVoteTo);
 		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3[this.AddressToSendVoteTo]));
 		w4.Position = 0;
