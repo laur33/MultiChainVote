@@ -95,9 +95,10 @@ public partial class MainWindow : Gtk.Window
 		task.Wait();
 	}
 
+	// Task for sending an asset to a specific address specified in the text field
 	private async Task sendAsset()	{
-		Console.WriteLine("Sending asset to address specified in text box");
-		Console.WriteLine(textview1.Buffer.Text);
+		Console.WriteLine("Sending asset to address: {0}", textview1.Buffer.Text);
+		Console.WriteLine();
 		var sentAsset = await client.SendAssetToAddressAsync(textview1.Buffer.Text, assetName, 1);
 		Console.WriteLine(sentAsset.RawJson);
 		sentAsset.AssertOk();
