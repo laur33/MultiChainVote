@@ -48,7 +48,8 @@ public partial class MainWindow : Gtk.Window
 		var info = await client.GetInfoAsync();
 		info.AssertOk();
 		Console.WriteLine("ChainName: {0}", info.Result.ChainName);
-		Console.WriteLine();	}
+		Console.WriteLine();
+	}
 
 	protected void OnButtonGenerateClicked(object sender, EventArgs e)
 	{
@@ -82,7 +83,8 @@ public partial class MainWindow : Gtk.Window
 		Console.WriteLine(perms.RawJson);
 		perms.AssertOk();
 
-		address = newAddress.Result;	 }
+		address = newAddress.Result;
+	}
 
 	protected void OnButtonVoteClicked(object sender, EventArgs e)
 	{
@@ -96,7 +98,8 @@ public partial class MainWindow : Gtk.Window
 	}
 
 	// Task for sending an asset to a specific address specified in the text field
-	private async Task sendAsset()	{
+	private async Task sendAsset()
+	{
 		Console.WriteLine("Sending asset to address: {0}", textview1.Buffer.Text);
 		Console.WriteLine();
 		var sentAsset = await client.SendAssetToAddressAsync(textview1.Buffer.Text, assetName, 1);

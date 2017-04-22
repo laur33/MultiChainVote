@@ -194,7 +194,8 @@ namespace MultiChainLib
 			decimal nativeAmount = 0, string comment = null, string commentTo = null, int startBlock = 0, int endBlock = 0)
 		{
 			return this.ExecuteAsync<string>("issuemore", 0, address, assetName, quantity); /*, nativeAmount, comment,
-                commentTo, startBlock, endBlock);*/   }
+                commentTo, startBlock, endBlock);*/  
+		}
 
         public Task<JsonRpcResponse<List<AssetResponse>>> ListAssetsAsync()
         {
